@@ -27,7 +27,7 @@ The website consists of a Ruby on Rails backend and an Ember.js frontend.
 * go to localhost:3000/api/[something from the routes.rb file] to see the api
 
 ### Testing
-I have not run any of the tests
+Needs work. (Highest Priority for future work)
 
 ### Deployment
 * `rails g ember:heroku`
