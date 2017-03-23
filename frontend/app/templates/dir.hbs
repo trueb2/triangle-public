@@ -1,0 +1,21 @@
+{{#paper-content}}
+  <div class='layout-column layout-align-space-around-center'>
+    {{outlet}}
+    {{paper-divider}}
+    {{#paper-list}}
+      {{#each model as |b|}}
+        <h3>
+          {{ b.first }}
+          {{ b.middle }}
+          {{ b.last }}
+          {{ b.major }}
+          {{ b.pledge_class }}
+          {{ b.city }}
+          {{ b.state }}
+          {{ b.phone }}
+          {{ b.email }}
+        </h3>
+      {{/each}}
+    {{/paper-list}}
+  </div>
+{{/paper-content}}

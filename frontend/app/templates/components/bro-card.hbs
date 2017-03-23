@@ -1,0 +1,11 @@
+<div id='js-fadeInElement{{bro.id}}'>
+  {{#paper-card as |card|}}
+    {{card.image src=bro.image.path}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}{{bro.first}} {{bro.last}}{{/text.headline}}
+        {{#text.subhead}}<p>{{job_title}}</p><p>{{job.email}}</p>{{/text.subhead}}
+      {{/title.text}}
+    {{/card.title}}
+  {{/paper-card}}
+</div>

@@ -1,0 +1,73 @@
+$xs: (max-width: 599px);
+$gt-xs: (min-width: 600px);
+$sm: (min-width: 600px) and (max-width: 959px);
+$gt-sm: (min-width: 960px);
+$md: (min-width: 960px) and (max-width: 1279px);
+$gt-md: (min-width: 1280px);
+$lg: (min-width: 1280px) and (max-width: 1919px);
+$gt-lg: (min-width: 1920px);
+$xl: (min-width: 1920px);
+
+@import 'ember-paper';
+@import 'geometric-type';
+@import 'parallax-window';
+@import 'footer';
+@import 'hero-unit';
+
+.oldrose-background {
+  background-color: #903;
+}
+.lighthouse {
+  background-image: url('images/lighthouse.png');
+  background-size: cover;
+  min-height: 20em;
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+.pad {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.pad-all {
+  padding: 2em;
+}
+.dropzone {
+  padding: 2em;
+  min-height: 300px;
+  min-width: 300px;
+  background: #777;
+}
+.little-pic {
+  max-width:200px;
+  margin-bottom: 1em;
+}
+.js-slide-left-hide {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+  visibility: visible;
+}
+
+.js-slide-left-show {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.5s ease-in-out;
+}
+/////////////Refills Styles//////////////////////
+.js-fade-element-hide {
+  opacity: 0.2;
+}
+
+.js-fade-element-show {
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+.footer-logo {
+  margin-bottom: 2em;
+  text-align: center;
+
+  img {
+    height: 3em;
+  }
+}

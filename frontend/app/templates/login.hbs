@@ -1,0 +1,31 @@
+<div class='layout-column layout-align-center-center'>
+  <h1> Login </h1>
+  <div class='flex-grow'>
+    {{#paper-form onSubmit=(action "loginAction") as |form|}}
+      <div class='layout-column'>
+        <div class="layout-row">
+          <div class="flex-50">
+          {{form.input
+            label="Email"
+            value=email
+            onChange=(action (mut email))
+            required=true
+            type='email'}}
+          </div>
+          <div class='flex-50'>
+            {{form.input
+              label="Password"
+              value=password
+              onChange=(action (mut password))
+              required=true
+              type='password'}}
+          </div>
+        </div>
+        <div class="layout-row">
+          {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+          {{#paper-button raised=true primary=true onClick=(action 'signUpTransition')}}Register{{/paper-button}}
+        </div>
+      </div>
+    {{/paper-form}}
+  </div>
+</div>

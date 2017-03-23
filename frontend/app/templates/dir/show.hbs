@@ -1,0 +1,16 @@
+{{#paper-content}}
+  <h2>Update Brother Info</h2>
+  {{#form-for model.brother as |f|}}
+    {{f.text-field 'first'}}
+    {{f.text-field 'middle'}}
+    {{f.text-field 'last'}}
+    {{f.text-field 'major'}}
+    {{f.text-field 'pledge_class'}}
+    {{f.text-field 'city'}}
+    {{f.text-field 'state'}}
+    {{f.text-field 'phone'}}
+    {{f.text-field 'email'}}
+    {{f.select-field 'image' model.images optionValuePath='id' optionLabelPath='path'}}
+    {{f.submit}}
+  {{/form-for}}
+{{/paper-content}}

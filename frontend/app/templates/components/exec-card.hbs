@@ -1,0 +1,11 @@
+<div id='js-fadeInElement{{job.execb}}'>
+  {{#paper-card as |card|}}
+    {{card.image src="http://miguelcobain.github.io/ember-paper/release-1/tomster-9918e85a7f1a28c78b484c34cbe88579.png"}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}{{job.brother.first}} {{job.brother.last}}{{/text.headline}}
+        {{#text.subhead}}<p>{{job_title}}</p><p>{{job.email}}</p>{{/text.subhead}}
+      {{/title.text}}
+    {{/card.title}}
+  {{/paper-card}}
+</div>

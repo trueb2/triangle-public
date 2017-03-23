@@ -1,0 +1,29 @@
+.hero-container {
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  min-height: 500px;
+
+  img.hero-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    background-color: #fff;
+    opacity: .9;
+  }
+
+  .hero-logo {
+    max-height: 100px;
+    margin: auto;
+  }
+  .hero-long {
+    max-width: 200px;
+    text-align: center;
+  }
+}

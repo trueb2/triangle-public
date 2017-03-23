@@ -1,0 +1,114 @@
+<div class='layout-column type-system-geometric'>
+  <section>
+    <div class='pad lighthouse layout-row layout-align-center-center'>
+      <div class='flex-15'></div>
+      <div class='flex-70'>
+        <article>
+          <div class='layout-row layout-align-center-center'>
+            <h1>About Triangle</h1>
+          </div>
+          <h2>For over 100 years, Triangle Fraternity has provided an environment
+          which fosters personal growth and professional success. Triangle is
+          a brotherhood where undergraduates in engineering, architecture and
+          science can develop long-lasting friendships
+          and connections with a nationwide network of alumni.</h2>
+          <h2>Triangle is active in both the Greek and STEM community on campus.
+          In the Greek community, we host social exchanges with sororities,
+          participate in community service events, spearhead our own philanthropy
+          fundraisers, and have brotherhood membership events such as an annual
+          brotherhood retreat. Within the STEM community, we participate in
+          EOH and other engineering competitions, network with organizations
+          through Engineering Council, host dinners with professors and
+          co-host recruitment events and informational sessions with companies.</h2>
+      </article>
+      </div>
+      <div class='flex-15'></div>
+    </div>
+  </section>
+
+  <section>
+    <div class='hide-xs hide-sm hide-md'>
+      {{parallax-window windowId=1 image='assets/images/house.jpg'}}
+    </div>
+    <div class='hide-gt-md'>
+      <img class='responsive' src='assets/images/house.jpg'>
+    </div>
+  </section>
+
+  <section id='events' class='pad'>
+    <div class='layout-column layout-align-space-around-center'>
+      <h1>Events</h1>
+      {{#paper-button onClick=(action 'toggleShowPastEvents')}}
+        {{#if showPastEvents }}
+          Hide Past Events
+        {{else}}
+          Show Past Events
+        {{/if}}
+      {{/paper-button}}
+      {{#each displayEvents as |event|}}
+        {{#hero-unit
+          fadeId=event.id
+          image=event.image.path
+          event_type=event.event_type}}
+          <p class='hero-short'>{{event.short}}</p>
+          <p class='hero-short'>{{print-date event.start}}</p>
+          <p class='hero-long'>{{event.long}}</p>
+        {{/hero-unit}}
+      {{/each}}
+    </div>
+  </section>
+
+  <section>
+    <div class='hide-xs hide-sm hide-md'>
+      {{parallax-window windowId=2 image='assets/images/flag.png'}}
+    </div>
+    <div class='hide-gt-md'>
+      <img class='responsive' src='assets/images/flag.png'>
+    </div>
+  </section>
+
+  <section id='execb' class='pad'>
+    <div class='layout-column'>
+      <div class='layout-row layout-align-center-center'>
+        <h1>Exec Board Contacts</h1>
+      </div>
+
+      <div class='layout-row layout-wrap layout-align-space-around-center'>
+        {{#each execBoard as |job|}}
+          <div class='flex-25 flex-md-50 flex-sm-50 flex-xs-100'>
+            {{bro-card bro=job.brother job=job}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <footer class='footer type-system-geometric'>
+    <div class='layout-column layout-align-space-around-center'>
+      <div class="footer-logo">
+        <img src="assets/images/deltat.png" alt="Logo image">
+      </div>
+      <div class='footer-links layout-row layout-xs-column layout-align-space-around-start'>
+        <ul>
+          <li><h3>Address</h3></li>
+          <li>Triangle Fraternity</li>
+          <li>112 E Daniel St.</li>
+          <li>Champaign, IL 61820</li>
+        </ul>
+        <ul>
+          <li><h3>Follow Us</h3></li>
+          <li><a href="https://www.facebook.com/illinoistriangle/">Facebook</a></li>
+        </ul>
+        <ul>
+          <li><h3>Nationals</h3></li>
+          <li><a href="http://triangle.org/">Website</a></li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <p>@2017 Presented by the Brothers of Triangle Fraternity</p>
+
+    </div>
+  </footer>
+</div>

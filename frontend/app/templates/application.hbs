@@ -1,0 +1,57 @@
+
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools class='oldrose-background'}}
+    {{#paper-sidenav-toggle name='left' as |toggle|}}
+      {{#paper-button iconButton=true onClick=(action toggle)}}
+        {{paper-icon 'menu'}}
+      {{/paper-button}}
+    {{/paper-sidenav-toggle}}
+    <h1>Triangle Fraternity</h1>
+    <h1 class='hide-xs' style='padding-left: .5em'>Illinois Chapter</h1>
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+
+{{#paper-sidenav-container class='inner-sidenav layout-align-center-center'}}
+  {{#paper-sidenav
+    class='md-whiteframe-z2'
+    name='left'
+    open=leftSideBarOpen
+    lockedOpen=false
+    position='left'
+    onToggle=(action (mut leftSideBarOpen))
+  }}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools class='oldrose-background'}}Menu{{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      {{#paper-list}}
+        {{#paper-item}}{{#paper-button onClick=(action 'eventsTransition')}}Events{{/paper-button}}{{/paper-item}}
+        {{#paper-item}}{{#paper-button onClick=(action 'execbTransition')}}Exec Board{{/paper-button}}{{/paper-item}}
+        {{#if session.isAuthenticated}}
+          {{paper-divider}}
+          {{#paper-item}}{{#paper-button onClick=(action 'dirTransition')}}Brotherhood Directory{{/paper-button}}{{/paper-item}}
+        {{/if}}
+        {{#if currentUser.isAdmin }}
+          {{paper-divider}}
+          {{#paper-item}}{{#paper-button onClick=(action 'eventEditingTransition')}}Event Editing{{/paper-button}}{{/paper-item}}
+          {{#paper-item}}{{#paper-button onClick=(action 'imageUploadingTransition')}}Image Uploading{{/paper-button}}{{/paper-item}}
+          {{#paper-item}}{{#paper-button onClick=(action 'userManagementTransition')}}User Management{{/paper-button}}{{/paper-item}}
+        {{/if}}
+        {{paper-divider}}
+        {{#if session.isAuthenticated }}
+          {{#paper-item}}{{#paper-button disabled=true}}Signed in as {{currentUser.email}}{{/paper-button}}{{/paper-item}}
+          {{#paper-item}}
+            {{#paper-button warn=true onClick=(action 'invalidateSession')}}Logout{{/paper-button}}
+          {{/paper-item}}
+        {{else}}
+          {{#paper-item}}{{#paper-button primary=true onClick=(action 'loginTransition')}}Login{{/paper-button}}{{/paper-item}}
+          {{#paper-item}}{{#paper-button onClick=(action 'signUpTransition')}}Sign Up{{/paper-button}}{{/paper-item}}
+        {{/if}}
+      {{/paper-list}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+ {{outlet}}
+
+{{/paper-sidenav-container}}

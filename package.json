@@ -1,0 +1,16 @@
+{
+  "engines": {
+    "node": "6.3.1"
+  },
+  "scripts": {
+    "postinstall": "./bin/heroku_install"
+  },
+  "dependencies": {
+    "bower": "*"
+  },
+  "cacheDirectories": [
+    "frontend/node_modules",
+    "frontend/bower_components",
+    "node_modules"
+  ]
+}

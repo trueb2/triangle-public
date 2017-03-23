@@ -1,0 +1,59 @@
+<div class='layout-column' style='min-width: 700px'>
+  <h1>Event Editing</h1>
+
+  {{#paper-autocomplete
+    allowClear=true
+    options=model.events
+    searchText=(readonly eventSearchText)
+    onSearchTextChange=(action (mut eventSearchText))
+    selected=selectedEvent
+    searchField="short"
+    labelPath="short"
+    placeholder="Select an Event ..."
+    loadingMessage="Searching Events ..."
+    noMatchesMessage="Oops this event doesn't exist. Create a new event?"
+    onSelectionChange=(action 'newSelectedEvent') as |event autocomplete|}}
+    {{paper-autocomplete-highlight
+      label=event.short
+      searchText=autocomplete.searchText
+      flags="i"}}
+  {{/paper-autocomplete}}
+
+  {{#paper-form onSubmit=(action "eventSubmitAction") as |form|}}
+    <div class="layout-column">
+      {{form.input required=true label="Short Description" value=short onChange=(action (mut short))}}
+      {{form.input required=true label="Long Description" value=long onChange=(action (mut long))}}
+      {{form.input required=true type="number" label="Event Type" value=event_type onChange=(action (mut event_type))}}
+      {{form.input required=true type="datetime" label="Start YYYY-MM-DDThh:mm-06:00" value=start onChange=(action (mut start))}}
+      {{#paper-autocomplete
+        allowClear=true
+        options=filteredEventImages
+        searchText=(readonly imageSearchText)
+        onSearchTextChange=(action (mut imageSearchText))
+        selected=selectedImage
+        searchField="path"
+        labelPath="path"
+        placeholder="Select an Image..."
+        loadingMessage="Searching images..."
+        noMatchesMessage="Oops this image doesn't exist. Create a new image?"
+        onSelectionChange=(action (mut selectedImage)) as |image autocomplete|}}
+        {{paper-autocomplete-highlight
+          label=image.path
+          searchText=autocomplete.searchText
+          flags="i"}}
+      {{/paper-autocomplete}}
+      <div class='layout-row'>
+        {{#form.submit-button
+          raised=true
+          primary=true
+          disabled=form.isInvalid}}Submit{{/form.submit-button}}
+      </div>
+    </div>
+  {{/paper-form}}
+
+  {{#hero-unit image=selectedImage.path event_type=event_type}}
+    <p class='hero-short'>{{short}}</p>
+    <p class='hero-short'>{{print-date startDate}}</p>
+    <p class='hero-long'>{{long}}</p>
+  {{/hero-unit}}
+</div>

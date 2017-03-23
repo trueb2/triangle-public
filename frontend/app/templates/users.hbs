@@ -1,0 +1,43 @@
+<div class='layout-column layout-align-space-between-center'>
+  <h2> User Management </h2>
+
+  {{#paper-checkbox value=filterBy onChange=(action (mut filterBy))}}
+        Search Approved Users: {{filterBy}}
+  {{/paper-checkbox}}
+
+  {{#paper-autocomplete
+    allowClear=true
+    options=filteredUsers
+    searchText=(readonly userSearchText)
+    onSearchTextChange=(action (mut userSearchText))
+    selected=selectedUser
+    searchField="email"
+    labelPath="email"
+    placeholder="Select an User ..."
+    loadingMessage="Searching User ..."
+    noMatchesMessage="Oops this user doesn't exist. Create a new user?"
+    onSelectionChange=(action 'newSelectedUser') as |user autocomplete|}}
+    {{paper-autocomplete-highlight
+      label=user.email
+      searchText=autocomplete.searchText
+      flags="i"}}
+  {{/paper-autocomplete}}
+
+  {{#paper-form onSubmit=(action "userSubmitAction") as |form|}}
+    <div class="layout-column">
+      {{form.input required=true label="User Email" value=email onChange=(action (mut email))}}
+      {{#paper-checkbox value=approved onChange=(action (mut approved))}}
+            Approved: {{approved}}
+      {{/paper-checkbox}}
+      {{#paper-checkbox value=admin onChange=(action (mut admin))}}
+            Admin: {{admin}}
+      {{/paper-checkbox}}
+      <div class='layout-row'>
+        {{#form.submit-button
+          raised=true
+          primary=true
+          disabled=form.isInvalid}}Submit{{/form.submit-button}}
+      </div>
+    </div>
+  {{/paper-form}}
+</div>

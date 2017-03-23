@@ -1,0 +1,39 @@
+<div class='layout-column'>
+  <h1>Image Uploading</h1>
+  {{#paper-radio toggle=true value="isBro" groupValue=toggleValue
+    onChange=(action (mut toggleValue))}}
+    Is Brother Picture
+  {{/paper-radio}}
+  <div class='md-whiteframe-z2 pad-all'>
+    {{#pl-uploader for="upload-image" extensions="jpg jpeg png" onfileadd="uploadImage" onerror='onError' as |queue dropzone|}}
+      <div class="dropzone" id={{dropzone.id}}>
+        {{#if dropzone.active}}
+          {{#if dropzone.valid}}
+            Drop to upload
+          {{else}}
+            Invalid
+          {{/if}}
+        {{else if queue.length}}
+          Uploading {{queue.length}} files. ({{queue.progress}}%)
+        {{else}}
+          <h4>Upload Images</h4>
+          <p>
+            {{#if dropzone.enabled}}
+              Drag and drop images onto this area to upload them or
+            {{/if}}
+            <a id="upload-image">Add an Image.</a>
+          </p>
+        {{/if}}
+      </div>
+    {{/pl-uploader}}
+  </div>
+  <hr/>
+  <h2>Unused Brother Images</h2>
+  {{#each brotherImages as |i|}}
+    <img class='responsive little-pic' src='{{i.path}}'>
+  {{/each}}
+  <h2>Unused Event Images</h2>
+  {{#each eventImages as |i|}}
+    <img class='responsive little-pic' src='{{i.path}}'>
+  {{/each}}
+</div>
